@@ -111,7 +111,7 @@ class BufferedTaskStream : public AudioStream {
  protected:
   AudioStream *p_stream = nullptr;
   bool active = false;
-  Task task{"BufferedTaskStream", STACK_SIZE, URL_STREAM_PRIORITY,
+  AATask task{"BufferedTaskStream", STACK_SIZE, URL_STREAM_PRIORITY,
             URL_STREAM_CORE};
   SynchronizedNBuffer<uint8_t> buffers{DEFAULT_BUFFER_SIZE,
                                        URL_STREAM_BUFFER_COUNT};

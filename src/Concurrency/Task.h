@@ -17,15 +17,15 @@ namespace audio_tools {
  * @author Phil Schatzmann
  * @copyright GPLv3 *
  */
-class Task {
+class AATask {
  public:
   /// Defines and creates a FreeRTOS task
-  Task(const char* name, int stackSize, int priority = 1, int core = -1) {
+  AATask(const char* name, int stackSize, int priority = 1, int core = -1) {
     create(name, stackSize, priority, core);
   }
 
-  Task() = default;
-  ~Task() { remove(); }
+  AATask() = default;
+  ~AATask() { remove(); }
 
   /// If you used the empty constructor, you need to call create!
   bool create(const char* name, int stackSize, int priority = 1,
@@ -93,7 +93,7 @@ class Task {
   static void nop() { delay(100); }
 
   static void task_loop(void* arg) {
-    Task* self = (Task*)arg;
+    AATask* self = (AATask*)arg;
     while (true) {
       self->loop_code();
     }
